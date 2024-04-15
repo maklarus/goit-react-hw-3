@@ -1,4 +1,4 @@
-import Contact from './Contact/Contact';
+import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
 export default function ContactList({ data, contacts, setContacts }) {
@@ -14,13 +14,8 @@ export default function ContactList({ data, contacts, setContacts }) {
             data={item}
             contacts={contacts}
             setContacts={setContacts}
+            deleteHandler={deleteHandler}
           ></Contact>
-          <button
-            className={css.deleteBtn}
-            onClick={() => deleteHandler(item.id)}
-          >
-            DELETE
-          </button>
         </li>
       ))}
     </ul>
