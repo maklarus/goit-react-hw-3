@@ -16,7 +16,7 @@ const UserSchema = Yup.object().shape({
     .required('is required!'),
 });
 
-export default function ContactForm({ contacts, setContacts }) {
+export default function ContactForm({ onAddContact }) {
   const name = nanoid();
   const number = nanoid();
 
@@ -28,12 +28,12 @@ export default function ContactForm({ contacts, setContacts }) {
   const handleSubmit = (values, action) => {
     action.resetForm();
 
-    const newObj = {
+    const newContact = {
       id: nanoid(),
       ...values,
     };
 
-    setContacts([...contacts, newObj]);
+    onAddContact(newContact);
   };
 
   return (

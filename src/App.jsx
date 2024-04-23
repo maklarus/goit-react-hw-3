@@ -32,6 +32,10 @@ export default function App() {
     setContacts(visibleContacts.filter(item => item.id !== id));
   };
 
+  const onAddContact = newObj => {
+    setContacts([...contacts, newObj]);
+  };
+
   useEffect(() => {
     localStorage.setItem('Contacts', JSON.stringify(contacts));
   }, [contacts]);
@@ -39,7 +43,7 @@ export default function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm contacts={contacts} setContacts={setContacts} />
+      <ContactForm onAddContact={onAddContact} />
       <SearchBox handleFilter={handleFilter} />
       <ContactList data={visibleContacts} onDelete={deleteHandler} />
     </div>
