@@ -28,9 +28,12 @@ export default function App() {
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const deleteHandler = id => {
+    setContacts(visibleContacts.filter(item => item.id !== id));
+  };
+
   useEffect(() => {
     localStorage.setItem('Contacts', JSON.stringify(contacts));
-    console.log(contacts);
   }, [contacts]);
 
   return (
@@ -38,11 +41,7 @@ export default function App() {
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} setContacts={setContacts} />
       <SearchBox handleFilter={handleFilter} />
-      <ContactList
-        data={visibleContacts}
-        contacts={contacts}
-        setContacts={setContacts}
-      />
+      <ContactList data={visibleContacts} onDelete={deleteHandler} />
     </div>
   );
 }

@@ -1,20 +1,15 @@
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
-export default function ContactList({ data, contacts, setContacts }) {
-  const deleteHandler = id => {
-    setContacts(contacts.filter(item => item.id !== id));
-  };
-
+export default function ContactList({ data, onDelete }) {
   return (
     <ul className={css.cardList}>
       {data.map(item => (
         <li key={item.id} className={css.cardListItem}>
           <Contact
             data={item}
-            contacts={contacts}
-            setContacts={setContacts}
-            deleteHandler={deleteHandler}
+            setContacts={onDelete}
+            deleteHandler={onDelete}
           ></Contact>
         </li>
       ))}
