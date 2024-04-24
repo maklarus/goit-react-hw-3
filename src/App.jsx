@@ -29,7 +29,7 @@ export default function App() {
   );
 
   const deleteHandler = id => {
-    setContacts(visibleContacts.filter(item => item.id !== id));
+    setContacts(contacts.filter(item => item.id !== id));
   };
 
   const onAddContact = newObj => {
